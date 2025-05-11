@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compress PDF Online - Reduce PDF File Size for Free | PDFTools</title>
+    <meta name="description" content="Reduce PDF file size without losing quality. Free online PDF compressor with no watermarks, no registration required. Works on all devices.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://pdftools.com/compress-pdf">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Compress PDF Online - Reduce PDF File Size for Free">
+    <meta property="og:description" content="Shrink PDF files while maintaining quality. No watermarks, no limits.">
+    <meta property="og:image" content="https://pdftools.com/images/compress-pdf-og.jpg">
+    <meta property="og:url" content="https://pdftools.com/compress-pdf">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Compress PDF Online - Free PDF Size Reducer">
+    <meta name="twitter:description" content="Reduce PDF file size without quality loss. 100% free, no registration.">
+    
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Compress PDF Tool",
+      "url": "https://pdftools.com/compress-pdf",
+      "description": "Free online tool to reduce PDF file size while maintaining good quality.",
+      "applicationCategory": "DocumentUtility",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --text: #2b2d42;
+            --text-light: #8d99ae;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --border: #e9ecef;
+            --shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 25px 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        main {
+            padding: 20px 0 60px;
+        }
+
+        .tool-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .tool-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .tool-header p {
+            color: var(--text-light);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .upload-area {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border: 2px dashed var(--border);
+            text-align: center;
+            margin-bottom: 25px;
+            transition: all 0.2s ease;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary-light);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .upload-area h2 {
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+
+        .upload-area p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+
+        .file-info {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            display: none;
+        }
+
+        .file-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .file-icon {
+            font-size: 1.2rem;
+        }
+
+        .file-size {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .compress-options {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .option-group {
+            margin-bottom: 20px;
+        }
+
+        .option-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .option-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .option-group input, .option-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .compression-level {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .compression-level label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .error-message {
+            color: #e63946;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .content-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .content-section h3 {
+            margin: 20px 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .content-section p, .content-section ul {
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .content-section ul {
+            padding-left: 20px;
+        }
+
+        .content-section li {
+            margin-bottom: 8px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        @media (max-width: 600px) {
+            .tool-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .upload-area {
+                padding: 25px 15px;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .compression-level {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">
+                <span class="logo-icon">📄</span>
+                <span>PDFTools</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="tool-header">
+                <h1>Compress PDF Files</h1>
+                <p>Reduce PDF file size while maintaining good quality</p>
+            </div>
+
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📤</div>
+                <h2>Upload Your PDF</h2>
+                <p>Drag & drop file here or click to browse</p>
+                <input type="file" id="fileInput" class="file-input" accept=".pdf">
+                <button class="btn btn-primary" id="selectFileBtn">Select PDF</button>
+                <div id="uploadError" class="error-message"></div>
+            </div>
+
+            <div class="file-info" id="fileInfo">
+                <div class="file-name">
+                    <span class="file-icon">📄</span>
+                    <span id="fileName">document.pdf</span>
+                </div>
+                <div class="file-size" id="fileSize">2.4 MB</div>
+            </div>
+
+            <div class="compress-options">
+                <div class="option-group">
+                    <label>Compression Level</label>
+                    <div class="compression-level">
+                        <label>
+                            <input type="radio" name="compression" value="low" checked> 
+                            Low (Best quality)
+                        </label>
+                        <label>
+                            <input type="radio" name="compression" value="medium"> 
+                            Medium (Recommended)
+                        </label>
+                        <label>
+                            <input type="radio" name="compression" value="high"> 
+                            High (Smallest size)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <label for="outputName">Output File Name</label>
+                    <input type="text" id="outputName" placeholder="compressed-document.pdf" value="compressed-document.pdf">
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-primary" id="compressBtn" disabled>Compress PDF</button>
+                <button class="btn btn-outline" id="clearBtn">Clear</button>
+            </div>
+
+            <!-- Help Article Section -->
+            <div class="content-section">
+                <h2>How to Compress PDF Files Online</h2>
+                
+                <p>Compressing PDF documents is essential when you need to:</p>
+                <ul>
+                    <li>Reduce file size for email attachments</li>
+                    <li>Optimize documents for web uploads</li>
+                    <li>Save storage space on your device</li>
+                    <li>Speed up document sharing</li>
+                </ul>
+                
+                <h3>Step-by-Step Guide</h3>
+                <p><strong>1. Upload your PDF</strong> - Simply drag and drop or click to browse</p>
+                <p><strong>2. Choose compression level</strong> - Balance between quality and file size</p>
+                <p><strong>3. Set output filename</strong> - Keep original or create new name</p>
+                <p><strong>4. Compress PDF</strong> - Download your optimized file instantly</p>
+                
+                <h3>Pro Tips</h3>
+                <ul>
+                    <li>For documents with images, try different compression levels</li>
+                    <li>Use "Low compression" for important documents needing best quality</li>
+                    <li>Check the preview before downloading if available</li>
+                </ul>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="content-section">
+                <h2>Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Will compressing reduce my PDF quality?</div>
+                    <p>Our tool uses smart compression that minimizes quality loss. The "Low" setting preserves nearly all quality while still reducing file size.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What's the maximum file size I can compress?</div>
+                    <p>You can compress files up to 100MB for free. Our premium version handles files up to 1GB.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How much can I reduce my PDF size?</div>
+                    <p>Reduction depends on content. Image-heavy PDFs can shrink 50-70%, while text documents typically reduce 20-40%.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Is this tool secure for sensitive documents?</div>
+                    <p>Yes! All files are automatically deleted from our servers after 1 hour. We never store or access your documents after processing.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Can I compress multiple PDFs at once?</div>
+                    <p>Our free version processes one file at a time. Try our <a href="/batch-pdf-tools">Batch PDF Tools</a> for multiple files.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // DOM Elements
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const selectFileBtn = document.getElementById('selectFileBtn');
+        const fileInfo = document.getElementById('fileInfo');
+        const fileName = document.getElementById('fileName');
+        const fileSize = document.getElementById('fileSize');
+        const compressBtn = document.getElementById('compressBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const outputName = document.getElementById('outputName');
+        const uploadError = document.getElementById('uploadError');
+
+        // Store file
+        let currentFile = null;
+
+        // Event Listeners
+        selectFileBtn.addEventListener('click', () => fileInput.click());
+        
+        fileInput.addEventListener('change', handleFileSelect);
+        
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'var(--primary-light)';
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = 'var(--border)';
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'var(--border)';
+            if (e.dataTransfer.files.length) {
+                fileInput.files = e.dataTransfer.files;
+                handleFileSelect({ target: fileInput });
+            }
+        });
+        
+        compressBtn.addEventListener('click', compressPDF);
+        clearBtn.addEventListener('click', clearFile);
+
+        // Functions
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            if (!file.name.toLowerCase().endsWith('.pdf')) {
+                showError('Please select a PDF file');
+                return;
+            }
+            
+            currentFile = file;
+            
+            // Show file info
+            fileName.textContent = file.name;
+            fileSize.textContent = formatFileSize(file.size);
+            fileInfo.style.display = 'block';
+            
+            compressBtn.disabled = false;
+            fileInput.value = '';
+            uploadError.textContent = '';
+        }
+        
+        function clearFile() {
+            currentFile = null;
+            fileInfo.style.display = 'none';
+            compressBtn.disabled = true;
+            outputName.value = 'compressed-document.pdf';
+        }
+        
+        function compressPDF() {
+            if (!currentFile) return;
+            
+            compressBtn.disabled = true;
+            compressBtn.textContent = 'Compressing...';
+            
+            // Get selected compression level
+            const compressionLevel = document.querySelector('input[name="compression"]:checked').value;
+            
+            setTimeout(() => {
+                // Simulate different compression results
+                let originalSize = currentFile.size;
+                let compressedSize;
+                let quality;
+                
+                switch(compressionLevel) {
+                    case 'low':
+                        compressedSize = originalSize * 0.8; // 20% reduction
+                        quality = "excellent";
+                        break;
+                    case 'medium':
+                        compressedSize = originalSize * 0.6; // 40% reduction
+                        quality = "good";
+                        break;
+                    case 'high':
+                        compressedSize = originalSize * 0.4; // 60% reduction
+                        quality = "fair";
+                        break;
+                }
+                
+                showSuccess(`Compressed from ${formatFileSize(originalSize)} to ${formatFileSize(compressedSize)} with ${quality} quality`);
+                
+                // Simulate download
+                const downloadLink = document.createElement('a');
+                downloadLink.href = '#';
+                downloadLink.download = outputName.value || 'compressed-document.pdf';
+                downloadLink.click();
+                
+                compressBtn.disabled = false;
+                compressBtn.textContent = 'Compress PDF';
+            }, 1500);
+        }
+        
+        function showError(message) {
+            uploadError.textContent = message;
+            setTimeout(() => {
+                uploadError.textContent = '';
+            }, 3000);
+        }
+        
+        function showSuccess(message) {
+            const successEl = document.createElement('div');
+            successEl.className = 'success-message';
+            successEl.textContent = message;
+            uploadArea.appendChild(successEl);
+            setTimeout(() => successEl.remove(), 3000);
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+    </script>
+</body>
+</html>
