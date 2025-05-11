@@ -4,7 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Split PDF Online - Free PDF Page Extractor | PDFTools</title>
-    <meta name="description" content="Split PDF files into individual pages or extract specific ranges. 100% free, no watermarks, no registration required.">
+    <meta name="description" content="Split PDF files into individual pages or extract specific ranges. 100% free, no watermarks, no registration required. Works on all devices.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://pdftools.com/split-pdf">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Split PDF Online - Free PDF Page Extractor | PDFTools">
+    <meta property="og:description" content="Split PDF files into individual pages or extract specific ranges. 100% free, no watermarks.">
+    <meta property="og:image" content="https://pdftools.com/images/split-pdf-og.jpg">
+    <meta property="og:url" content="https://pdftools.com/split-pdf">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Split PDF Online - Free PDF Page Extractor">
+    <meta name="twitter:description" content="Extract pages from PDFs for free. No watermarks, no limits.">
+    
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Split PDF Tool",
+      "url": "https://pdftools.com/split-pdf",
+      "description": "Free online tool to split PDF files into individual pages or extract specific ranges.",
+      "applicationCategory": "DocumentUtility",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    
     <style>
         :root {
             --primary: #4361ee;
@@ -220,6 +254,54 @@
             font-size: 0.9rem;
         }
 
+        .content-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .content-section h3 {
+            margin: 20px 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .content-section p, .content-section ul {
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .content-section ul {
+            padding-left: 20px;
+        }
+
+        .content-section li {
+            margin-bottom: 8px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
         @media (max-width: 600px) {
             .tool-header h1 {
                 font-size: 1.8rem;
@@ -303,6 +385,62 @@
             <div class="actions">
                 <button class="btn btn-primary" id="splitBtn" disabled>Split PDF</button>
                 <button class="btn btn-outline" id="clearBtn">Clear</button>
+            </div>
+
+            <!-- Help Article Section -->
+            <div class="content-section">
+                <h2>How to Split PDF Files Online</h2>
+                
+                <p>Splitting PDF documents is essential when you need to:</p>
+                <ul>
+                    <li>Extract specific pages from a large document</li>
+                    <li>Share only relevant portions of a file</li>
+                    <li>Organize content into smaller, more manageable files</li>
+                    <li>Remove unnecessary pages before sharing</li>
+                </ul>
+                
+                <h3>Step-by-Step Guide</h3>
+                <p><strong>1. Upload your PDF</strong> - Drag and drop or click to browse files</p>
+                <p><strong>2. Choose split method</strong> - Either split all pages or select specific ranges</p>
+                <p><strong>3. Set options</strong> - Customize output filenames if needed</p>
+                <p><strong>4. Split PDF</strong> - Download your files instantly</p>
+                
+                <h3>Pro Tips</h3>
+                <ul>
+                    <li>For legal documents, double-check page ranges before splitting</li>
+                    <li>Use clear naming conventions (e.g., "Contract_Pages1-3.pdf")</li>
+                    <li>Combine with our Merge PDF tool for advanced document reorganization</li>
+                </ul>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="content-section">
+                <h2>Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Is there a file size limit?</div>
+                    <p>No! You can split PDFs of any size completely free. Our tool handles large documents efficiently.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How long are my files stored?</div>
+                    <p>All uploaded files are automatically deleted from our servers after 60 minutes for your privacy.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Can I split password-protected PDFs?</div>
+                    <p>Yes, if you enter the correct password when uploading the file. We don't store passwords.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Is this tool really free?</div>
+                    <p>Absolutely! No hidden costs, no watermarks, and no registration required.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What browsers are supported?</div>
+                    <p>Our tool works on all modern browsers including Chrome, Firefox, Safari, and Edge.</p>
+                </div>
             </div>
         </div>
     </main>
