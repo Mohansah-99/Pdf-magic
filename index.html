@@ -3,417 +3,547 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDFMagic - Advanced Online PDF Tools</title>
-    <meta name="description" content="Merge, split, compress, convert PDFs with our free online tools. Better than iLovePDF with faster processing and privacy focus.">
+    <title>PDFTools Pro | Online PDF Editor</title>
     <style>
         :root {
-            --primary: #4361ee;
-            --secondary: #3f37c9;
-            --accent: #4895ef;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #4cc9f0;
-            --danger: #f72585;
-            --warning: #f8961e;
-            --border-radius: 8px;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --secondary: #1e40af;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --bg: #f9fafb;
+            --card-bg: #ffffff;
+            --border: #e5e7eb;
+            --success: #10b981;
+            --error: #ef4444;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
         body {
-            background-color: #f5f7ff;
-            color: var(--dark);
-            line-height: 1.6;
-        }
-
-        header {
-            background: white;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
         }
 
         .container {
-            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr;
+            gap: 20px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        nav {
+        header {
+            grid-column: 1 / -1;
+            background: var(--card-bg);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
             text-decoration: none;
             display: flex;
             align-items: center;
+            gap: 8px;
         }
 
-        .logo span {
-            color: var(--accent);
+        .logo-icon {
+            font-size: 1.8rem;
         }
 
-        .nav-links {
+        nav {
             display: flex;
-            gap: 2rem;
+            gap: 25px;
+            align-items: center;
         }
 
-        .nav-links a {
+        nav a {
+            color: var(--text);
             text-decoration: none;
-            color: var(--dark);
             font-weight: 500;
-            transition: var(--transition);
+            transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        nav a:hover {
             color: var(--primary);
         }
 
         .btn {
-            padding: 0.6rem 1.2rem;
-            border-radius: var(--border-radius);
-            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
             cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
+            transition: all 0.2s;
+            border: none;
         }
 
         .btn-primary {
-            background-color: var(--primary);
+            background: var(--primary);
             color: white;
         }
 
         .btn-primary:hover {
-            background-color: var(--secondary);
-            transform: translateY(-2px);
+            background: var(--primary-light);
         }
 
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            background: linear-gradient(135deg, #4361ee10, #4895ef20);
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            color: #555;
-        }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            padding: 2rem 0;
-        }
-
-        .tool-card {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .tool-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
             color: var(--primary);
         }
 
-        .upload-area {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            margin: 2rem auto;
-            max-width: 800px;
-            box-shadow: var(--shadow);
+        .btn-outline:hover {
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .ad-unit {
+            background: #f3f4f6;
+            border: 1px dashed #d1d5db;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .ad-vertical {
+            height: 600px;
+            width: 100%;
+        }
+
+        .ad-horizontal {
+            width: 100%;
+            height: 90px;
+        }
+
+        main {
+            grid-column: 2;
+            margin-top: 30px;
+        }
+
+        .tool-header {
             text-align: center;
-            border: 2px dashed #ccc;
-            transition: var(--transition);
+            margin-bottom: 30px;
+        }
+
+        .tool-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .tool-header p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .upload-area {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 2px dashed var(--border);
+            transition: all 0.2s;
+            text-align: center;
+            margin-bottom: 30px;
         }
 
         .upload-area.active {
             border-color: var(--primary);
-            background-color: #f0f4ff;
+            background-color: rgba(37, 99, 235, 0.03);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
         }
 
         .upload-area h2 {
-            margin-bottom: 1rem;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
         }
 
         .upload-area p {
-            color: #666;
-            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .progress-container {
+            margin-top: 20px;
+            display: none;
         }
 
         .progress-bar {
             height: 6px;
-            background: #e9ecef;
+            background: #e5e7eb;
             border-radius: 3px;
-            margin: 1rem 0;
             overflow: hidden;
-            display: none;
+            margin-bottom: 10px;
         }
 
         .progress {
             height: 100%;
             background: var(--primary);
             width: 0%;
-            transition: width 0.3s ease;
+            transition: width 0.3s;
         }
 
         .file-info {
-            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .file-name {
+            font-weight: 500;
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .file-size {
+            color: var(--text-light);
             font-size: 0.9rem;
-            color: #666;
         }
 
         .actions {
             display: flex;
-            gap: 1rem;
+            gap: 10px;
             justify-content: center;
-            margin-top: 1.5rem;
+            margin-top: 20px;
         }
 
-        .ad-container {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            margin: 2rem auto;
-            max-width: 800px;
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.2s;
             text-align: center;
-            border: 1px solid #eee;
+            cursor: pointer;
+            border: 1px solid transparent;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        .tool-card.active {
+            border-color: var(--primary);
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+        .tool-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .tool-card h3 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .tool-card p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        aside {
+            margin-top: 30px;
         }
 
         footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 0;
-            margin-top: 3rem;
+            grid-column: 1 / -1;
+            background: var(--card-bg);
+            margin-top: 50px;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         .footer-column h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: var(--text);
         }
 
         .footer-column ul {
             list-style: none;
         }
 
-        .footer-column ul li {
-            margin-bottom: 0.8rem;
+        .footer-column li {
+            margin-bottom: 10px;
         }
 
-        .footer-column ul li a {
-            color: #adb5bd;
+        .footer-column a {
+            color: var(--text-light);
             text-decoration: none;
-            transition: var(--transition);
+            font-size: 0.9rem;
+            transition: color 0.2s;
         }
 
-        .footer-column ul li a:hover {
-            color: white;
+        .footer-column a:hover {
+            color: var(--primary);
         }
 
         .copyright {
             text-align: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid #495057;
-            color: #adb5bd;
+            margin-top: 40px;
+            color: var(--text-light);
+            font-size: 0.85rem;
         }
 
-        @media (max-width: 768px) {
-            .nav-links {
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            aside {
                 display: none;
             }
             
-            .tools-grid {
-                grid-template-columns: 1fr 1fr;
+            .ad-vertical {
+                display: none;
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
             .tools-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="header-container container">
+            <a href="#" class="logo">
+                <span class="logo-icon">📄</span>
+                <span>PDFTools Pro</span>
+            </a>
             <nav>
-                <a href="#" class="logo">PDF<span>Magic</span></a>
-                <div class="nav-links">
-                    <a href="#">Tools</a>
-                    <a href="#">Features</a>
-                    <a href="#">Pricing</a>
-                    <a href="#">Blog</a>
-                    <button class="btn btn-primary">Sign In</button>
-                </div>
+                <a href="#">Tools</a>
+                <a href="#">Features</a>
+                <a href="#">Pricing</a>
+                <a href="#">Blog</a>
+                <button class="btn btn-outline">Login</button>
+                <button class="btn btn-primary">Sign Up</button>
             </nav>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <h1>Your Advanced PDF Toolkit</h1>
-            <p>Merge, split, compress, convert and edit PDF files with our free online tools. Faster processing and better privacy than alternatives.</p>
-            
+    <div class="container">
+        <!-- Left Sidebar Ads -->
+        <aside>
+            <div class="ad-unit ad-vertical">
+                Advertisement<br>300x600
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Top Horizontal Ad -->
+            <div class="ad-unit ad-horizontal">
+                Advertisement<br>728x90
+            </div>
+
+            <div class="tool-header">
+                <h1>PDF to Word Converter</h1>
+                <p>Convert your PDF documents to fully editable Word files with perfect formatting preserved. No registration required.</p>
+            </div>
+
             <div class="upload-area" id="uploadArea">
-                <h2>Drop your PDF here</h2>
-                <p>Or click to browse files</p>
-                <input type="file" id="fileInput" accept=".pdf" style="display: none;">
+                <div class="upload-icon">📤</div>
+                <h2>Drag & Drop your PDF here</h2>
+                <p>or click to browse files on your computer</p>
+                <input type="file" id="fileInput" class="file-input" accept=".pdf">
                 <button class="btn btn-primary" id="selectFileBtn">Select PDF File</button>
                 
-                <div class="progress-bar" id="progressBar">
-                    <div class="progress" id="progress"></div>
-                </div>
-                
-                <div class="file-info" id="fileInfo"></div>
-                
-                <div class="actions" id="actions" style="display: none;">
-                    <button class="btn btn-primary" id="processBtn">Process PDF</button>
-                    <button class="btn" id="cancelBtn">Cancel</button>
+                <div class="progress-container" id="progressContainer">
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <div class="file-info">
+                        <span class="file-name" id="fileName"></span>
+                        <span class="file-size" id="fileSize"></span>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-primary" id="convertBtn">Convert to Word</button>
+                        <button class="btn btn-outline" id="cancelBtn">Cancel</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <div class="container">
-        <h2 style="text-align: center; margin-bottom: 1rem;">Popular PDF Tools</h2>
-        <p style="text-align: center; margin-bottom: 2rem; color: #666;">All tools are free to use with no watermarks</p>
-        
-        <div class="tools-grid">
-            <div class="tool-card" data-tool="merge">
-                <div class="tool-icon">🧩</div>
-                <h3>Merge PDF</h3>
-                <p>Combine multiple PDFs into one document</p>
+            <div class="tools-grid">
+                <a href="/merge-pdf" class="tool-card" data-tool="merge">
+                    <div class="tool-icon">🧩</div>
+                    <h3>Merge PDF</h3>
+                    <p>Combine multiple files into one</p>
+                </a>
+                <a href="/split-pdf" class="tool-card" data-tool="split">
+                    <div class="tool-icon">✂️</div>
+                    <h3>Split PDF</h3>
+                    <p>Divide a PDF into multiple files</p>
+                </a>
+                <a href="/compress-pdf" class="tool-card" data-tool="compress">
+                    <div class="tool-icon">🗜️</div>
+                    <h3>Compress</h3>
+                    <p>Reduce PDF file size</p>
+                </a>
+                <a href="/word-to-pdf" class="tool-card" data-tool="word-to-pdf">
+                    <div class="tool-icon">📄</div>
+                    <h3>Word to PDF</h3>
+                    <p>Convert DOCX to PDF</p>
+                </a>
+                <a href="/pdf-to-excel" class="tool-card" data-tool="pdf-to-excel">
+                    <div class="tool-icon">📊</div>
+                    <h3>PDF to Excel</h3>
+                    <p>Extract tables to spreadsheet</p>
+                </a>
+                <a href="/jpg-to-pdf" class="tool-card" data-tool="jpg-to-pdf">
+                    <div class="tool-icon">🖼️</div>
+                    <h3>JPG to PDF</h3>
+                    <p>Convert images to PDF</p>
+                </a>
+                <a href="/rotate-pdf" class="tool-card" data-tool="rotate">
+                    <div class="tool-icon">🔄</div>
+                    <h3>Rotate PDF</h3>
+                    <p>Change page orientation</p>
+                </a>
+                <a href="/unlock-pdf" class="tool-card" data-tool="unlock">
+                    <div class="tool-icon">🔓</div>
+                    <h3>Unlock PDF</h3>
+                    <p>Remove password protection</p>
+                </a>
+                <a href="/pdf-to-word" class="tool-card" data-tool="pdf-to-word">
+                    <div class="tool-icon">📝</div>
+                    <h3>PDF to Word</h3>
+                    <p>Convert PDF to editable DOCX</p>
+                </a>
+                <a href="/pdf-to-ppt" class="tool-card" data-tool="pdf-to-ppt">
+                    <div class="tool-icon">📑</div>
+                    <h3>PDF to PPT</h3>
+                    <p>Convert to PowerPoint slides</p>
+                </a>
+                <a href="/pdf-to-jpg" class="tool-card" data-tool="pdf-to-jpg">
+                    <div class="tool-icon">🖼️</div>
+                    <h3>PDF to JPG</h3>
+                    <p>Extract images from PDF</p>
+                </a>
+                <a href="/ocr-pdf" class="tool-card" data-tool="ocr">
+                    <div class="tool-icon">🔍</div>
+                    <h3>OCR PDF</h3>
+                    <p>Extract text from scans</p>
+                </a>
             </div>
-            <div class="tool-card" data-tool="split">
-                <div class="tool-icon">✂️</div>
-                <h3>Split PDF</h3>
-                <p>Divide a PDF into separate documents</p>
+        </main>
+
+        <!-- Right Sidebar Ads -->
+        <aside>
+            <div class="ad-unit ad-vertical">
+                Advertisement<br>300x600
             </div>
-            <div class="tool-card" data-tool="compress">
-                <div class="tool-icon">🗜️</div>
-                <h3>Compress PDF</h3>
-                <p>Reduce file size without losing quality</p>
-            </div>
-            <div class="tool-card" data-tool="word-to-pdf">
-                <div class="tool-icon">📄</div>
-                <h3>Word to PDF</h3>
-                <p>Convert DOC/DOCX to PDF format</p>
-            </div>
-            <div class="tool-card" data-tool="pdf-to-word">
-                <div class="tool-icon">📝</div>
-                <h3>PDF to Word</h3>
-                <p>Convert PDF to editable Word document</p>
-            </div>
-            <div class="tool-card" data-tool="ocr">
-                <div class="tool-icon">🔍</div>
-                <h3>OCR PDF</h3>
-                <p>Extract text from scanned documents</p>
-            </div>
-            <div class="tool-card" data-tool="esign">
-                <div class="tool-icon">✍️</div>
-                <h3>eSign PDF</h3>
-                <p>Add digital signatures to documents</p>
-            </div>
-            <div class="tool-card" data-tool="unlock">
-                <div class="tool-icon">🔓</div>
-                <h3>Unlock PDF</h3>
-                <p>Remove password protection</p>
-            </div>
-        </div>
-        
-        <div class="ad-container">
-            <p>Advertisement</p>
-            <div id="ad-banner" style="min-height: 90px; background: #eee; display: flex; align-items: center; justify-content: center;">
-                [AdSense or Affiliate Banner]
-            </div>
-        </div>
+        </aside>
     </div>
 
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>PDF Tools</h3>
-                    <ul>
-                        <li><a href="\Pdf-magic\merge.html\">Merge PDF</a></li>
-                        <li><a href="#">Split PDF</a></li>
-                        <li><a href="#">Compress PDF</a></li>
-                        <li><a href="#">Word to PDF</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Company</h3>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">GDPR</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Feedback</a></li>
-                        <li><a href="#">Report Issue</a></li>
-                    </ul>
-                </div>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>PDF Tools</h3>
+                <ul>
+                    <li><a href="/merge-pdf">Merge PDF</a></li>
+                    <li><a href="/split-pdf">Split PDF</a></li>
+                    <li><a href="/compress-pdf">Compress PDF</a></li>
+                    <li><a href="/word-to-pdf">Word to PDF</a></li>
+                </ul>
             </div>
-            <div class="copyright">
-                <p>&copy; 2023 PDFMagic. All rights reserved.</p>
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
             </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                    <li><a href="#">API</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#">GDPR</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2023 PDFTools Pro. All rights reserved.
         </div>
     </footer>
 
@@ -422,17 +552,13 @@
         const uploadArea = document.getElementById('uploadArea');
         const fileInput = document.getElementById('fileInput');
         const selectFileBtn = document.getElementById('selectFileBtn');
-        const progressBar = document.getElementById('progressBar');
+        const progressContainer = document.getElementById('progressContainer');
         const progress = document.getElementById('progress');
-        const fileInfo = document.getElementById('fileInfo');
-        const actions = document.getElementById('actions');
-        const processBtn = document.getElementById('processBtn');
+        const fileName = document.getElementById('fileName');
+        const fileSize = document.getElementById('fileSize');
+        const convertBtn = document.getElementById('convertBtn');
         const cancelBtn = document.getElementById('cancelBtn');
         const toolCards = document.querySelectorAll('.tool-card');
-
-        // Current state
-        let currentFile = null;
-        let currentTool = null;
 
         // Event Listeners
         selectFileBtn.addEventListener('click', () => fileInput.click());
@@ -457,44 +583,25 @@
             }
         });
         
-        processBtn.addEventListener('click', processFile);
+        convertBtn.addEventListener('click', processFile);
         cancelBtn.addEventListener('click', resetUploadArea);
-        
-        toolCards.forEach(card => {
-            card.addEventListener('click', () => {
-                // Remove active class from all cards
-                toolCards.forEach(c => c.style.border = 'none');
-                // Add active class to clicked card
-                card.style.border = `2px solid var(--primary)`;
-                currentTool = card.getAttribute('data-tool');
-                
-                // Update upload area text based on selected tool
-                const toolName = card.querySelector('h3').textContent;
-                uploadArea.querySelector('h2').textContent = `Upload PDF to ${toolName}`;
-            });
-        });
 
         // Functions
         function handleFileSelect(e) {
             const file = e.target.files[0];
             if (!file) return;
             
-            // Validate file type
             if (!file.name.endsWith('.pdf')) {
                 alert('Please select a PDF file');
                 return;
             }
             
-            currentFile = file;
-            
             // Show file info
-            fileInfo.innerHTML = `
-                <strong>${file.name}</strong> (${formatFileSize(file.size)})
-            `;
+            fileName.textContent = file.name;
+            fileSize.textContent = formatFileSize(file.size);
             
-            // Show progress bar and actions
-            progressBar.style.display = 'block';
-            actions.style.display = 'flex';
+            // Show progress container
+            progressContainer.style.display = 'block';
             
             // Simulate upload progress
             simulateUpload();
@@ -505,41 +612,26 @@
             const interval = setInterval(() => {
                 if (width >= 100) {
                     clearInterval(interval);
-                    progressBar.style.display = 'none';
                 } else {
-                    width++;
+                    width += 2;
                     progress.style.width = `${width}%`;
                 }
-            }, 20);
+            }, 50);
         }
         
         function processFile() {
-            if (!currentFile || !currentTool) {
-                alert('Please select both a file and a tool');
-                return;
-            }
-            
-            // In a real app, this would send to server for processing
-            alert(`Processing ${currentFile.name} with ${currentTool} tool...`);
-            
-            // Simulate processing delay
+            alert('Processing your file... (This would connect to backend in real app)');
             setTimeout(() => {
-                alert('Processing complete! In a real app, this would download the result.');
+                alert('Conversion complete! Download would start automatically in real app.');
                 resetUploadArea();
             }, 1500);
         }
         
         function resetUploadArea() {
             fileInput.value = '';
-            currentFile = null;
             progress.style.width = '0%';
-            fileInfo.textContent = '';
-            actions.style.display = 'none';
-            uploadArea.querySelector('h2').textContent = 'Drop your PDF here';
-            
-            // Reset tool selection
-            toolCards.forEach(c => c.style.border = 'none');
-            currentTool = null;
+            progressContainer.style.display = 'none';
+            uploadArea.classList.remove('active');
         }
         
         function formatFileSize(bytes) {
@@ -550,19 +642,20 @@
             return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
         }
 
-        // Ad placeholder rotation (simulation)
+        // Rotate ad content
+        const adUnits = document.querySelectorAll('.ad-unit');
         const adMessages = [
-            "Need professional PDF software? Try Acrobat Pro",
-            "Get 50% off PDF editors this week only",
-            "Store your files securely with our partner CloudStorage"
+            "Professional PDF Tools - Try Premium Features",
+            "Limited Offer: Get 50% Off Annual Subscription",
+            "Need More Storage? Check Our Cloud Partners",
+            "PDF Editing Made Simple - No Software Needed"
         ];
         
-        const adBanner = document.getElementById('ad-banner');
-        let adIndex = 0;
-        
         setInterval(() => {
-            adBanner.innerHTML = `<p>${adMessages[adIndex]}</p>`;
-            adIndex = (adIndex + 1) % adMessages.length;
+            adUnits.forEach(ad => {
+                const randomMsg = adMessages[Math.floor(Math.random() * adMessages.length)];
+                ad.innerHTML = `Advertisement<br>${randomMsg}`;
+            });
         }, 3000);
     </script>
 </body>
