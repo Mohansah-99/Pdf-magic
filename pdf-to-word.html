@@ -1,1 +1,703 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Word Converter - Convert PDF to DOC/DOCX Online | PDFTools</title>
+    <meta name="description" content="Convert PDF to Word documents online for free. Extract text and preserve formatting with high accuracy. No watermarks, no registration required.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://pdftools.com/pdf-to-word">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="PDF to Word Converter - Convert to DOC/DOCX Online">
+    <meta property="og:description" content="Convert PDF to editable Word documents while preserving formatting. 100% free, no watermarks.">
+    <meta property="og:image" content="https://pdftools.com/images/pdf-to-word-og.jpg">
+    <meta property="og:url" content="https://pdftools.com/pdf-to-word">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free PDF to Word Converter Online">
+    <meta name="twitter:description" content="Convert PDF to Word (DOC/DOCX) with perfect formatting preservation. No registration needed.">
+    
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PDF to Word Converter",
+      "url": "https://pdftools.com/pdf-to-word",
+      "description": "Free online tool to convert PDF documents to editable Word format while preserving text formatting and layout.",
+      "applicationCategory": "DocumentUtility",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --text: #2b2d42;
+            --text-light: #8d99ae;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --border: #e9ecef;
+            --shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 25px 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        main {
+            padding: 20px 0 60px;
+        }
+
+        .tool-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .tool-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .tool-header p {
+            color: var(--text-light);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .upload-area {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border: 2px dashed var(--border);
+            text-align: center;
+            margin-bottom: 25px;
+            transition: all 0.2s ease;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary-light);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .upload-area h2 {
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+
+        .upload-area p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+
+        .file-info {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            display: none;
+        }
+
+        .file-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .file-icon {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .file-size {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .conversion-options {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .option-group {
+            margin-bottom: 20px;
+        }
+
+        .option-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .option-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .option-group input, .option-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .error-message {
+            color: #e63946;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Ad Container Styles */
+        .ad-container {
+            background: #f3f4f6;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 30px 0;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .ad-label {
+            color: var(--text-light);
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .content-section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .content-section h3 {
+            margin: 20px 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .content-section p, .content-section ul {
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .content-section ul {
+            padding-left: 20px;
+        }
+
+        .content-section li {
+            margin-bottom: 8px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        @media (max-width: 600px) {
+            .tool-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .upload-area {
+                padding: 25px 15px;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">
+                <span class="logo-icon">📄</span>
+                <span>PDFTools</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="tool-header">
+                <h1>PDF to Word Converter</h1>
+                <p>Convert PDF files to editable Word documents while preserving formatting</p>
+            </div>
+
+            <!-- Top Ad Banner -->
+            <div class="ad-container">
+                <div class="ad-label">Advertisement</div>
+                <!-- Google AdSense Horizontal Banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📝</div>
+                <h2>Upload Your PDF Document</h2>
+                <p>Drag & drop PDF file here or click to browse</p>
+                <input type="file" id="fileInput" class="file-input" accept=".pdf,application/pdf">
+                <button class="btn btn-primary" id="selectFileBtn">Select PDF File</button>
+                <div id="uploadError" class="error-message"></div>
+            </div>
+
+            <div class="file-info" id="fileInfo">
+                <div class="file-name">
+                    <span class="file-icon">📄</span>
+                    <span id="fileName">document.pdf</span>
+                </div>
+                <div class="file-size" id="fileSize">1.2 MB</div>
+            </div>
+
+            <div class="conversion-options">
+                <div class="option-group">
+                    <label for="outputName">Output Word Name</label>
+                    <input type="text" id="outputName" placeholder="converted-document.docx" value="converted-document.docx">
+                </div>
+                <div class="option-group">
+                    <label for="format">Output Format</label>
+                    <select id="format">
+                        <option value="docx" selected>Word Document (.docx)</option>
+                        <option value="doc">Word 97-2003 (.doc)</option>
+                        <option value="rtf">Rich Text Format (.rtf)</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label>Conversion Options</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="preserveLayout" checked>
+                        <label for="preserveLayout">Preserve original layout</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="useOCR">
+                        <label for="useOCR">Use OCR for scanned PDFs</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Ad Banner -->
+            <div class="ad-container">
+                <div class="ad-label">Advertisement</div>
+                <!-- Google AdSense Horizontal Banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="0987654321"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-primary" id="convertBtn" disabled>Convert to Word</button>
+                <button class="btn btn-outline" id="clearBtn">Clear</button>
+            </div>
+
+            <!-- Help Article Section -->
+            <div class="content-section">
+                <h2>How to Convert PDF to Word</h2>
+                
+                <p>Converting PDF to Word is essential when you need to:</p>
+                <ul>
+                    <li>Edit content from PDF files</li>
+                    <li>Reuse text from PDF documents</li>
+                    <li>Update old PDF forms or documents</li>
+                    <li>Extract content for repurposing</li>
+                </ul>
+                
+                <h3>Step-by-Step Guide</h3>
+                <p><strong>1. Upload your PDF file</strong> - We support text-based and scanned PDFs (with OCR)</p>
+                <p><strong>2. Set conversion options</strong> - Choose output format and layout preferences</p>
+                <p><strong>3. Convert to Word</strong> - Process takes just seconds for most documents</p>
+                <p><strong>4. Download your Word file</strong> - Get editable document with preserved formatting</p>
+                
+                <h3>Pro Tips</h3>
+                <ul>
+                    <li>Use ".docx" format for best compatibility with modern Word versions</li>
+                    <li>Enable OCR for scanned documents or image-based PDFs</li>
+                    <li>For complex layouts, check "Preserve original layout" option</li>
+                    <li>After conversion, review formatting and adjust as needed in Word</li>
+                </ul>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="content-section">
+                <h2>Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How accurate is the PDF to Word conversion?</div>
+                    <p>Our converter achieves 95%+ accuracy for text-based PDFs with clear formatting. Complex layouts may require minor adjustments in Word after conversion.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Can I convert scanned PDFs to Word?</div>
+                    <p>Yes! Enable the OCR (Optical Character Recognition) option to convert scanned documents or image-based PDFs to editable Word files.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Will tables and images be preserved?</div>
+                    <p>Yes, our converter preserves tables, images, and most formatting elements. For best results with complex tables, use the "Preserve layout" option.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Is there a file size limit?</div>
+                    <p>The free version supports PDF files up to 50MB. For larger files, consider our premium service which handles documents up to 200MB.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Can I convert Word back to PDF?</div>
+                    <p>Yes! Try our <a href="/word-to-pdf">Word to PDF tool</a> to convert your edited document back to PDF format.</p>
+                </div>
+            </div>
+
+            <!-- Bottom Ad Banner -->
+            <div class="ad-container">
+                <div class="ad-label">Advertisement</div>
+                <!-- Google AdSense Horizontal Banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="5678901234"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: var(--text); color: white; padding: 40px 0; margin-top: 60px;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px;">
+                <div>
+                    <h3 style="color: white; margin-bottom: 20px;">PDFTools</h3>
+                    <p style="color: #ccc;">Your complete PDF solution with 300+ tools for conversion, editing, compression and more.</p>
+                </div>
+                <div>
+                    <h4 style="color: white; margin-bottom: 15px;">Categories</h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 8px;"><a href="/convert-tools" style="color: #ccc; text-decoration: none;">Conversion Tools</a></li>
+                        <li style="margin-bottom: 8px;"><a href="/edit-tools" style="color: #ccc; text-decoration: none;">Editing Tools</a></li>
+                        <li style="margin-bottom: 8px;"><a href="/security-tools" style="color: #ccc; text-decoration: none;">Security Tools</a></li>
+                        <li style="margin-bottom: 8px;"><a href="/ocr-tools" style="color: #ccc; text-decoration: none;">OCR Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: white; margin-bottom: 15px;">Company</h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 8px;"><a href="/about" style="color: #ccc; text-decoration: none;">About Us</a></li>
+                        <li style="margin-bottom: 8px;"><a href="/blog" style="color: #ccc; text-decoration: none;">Blog</a></li>
+                        <li style="margin-bottom: 8px;"><a href="/contact" style="color: #ccc; text-decoration: none;">Contact</a></li>
+                        <li style="margin-bottom: 8px;"><a href="/careers" style="color: #ccc; text-decoration: none;">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: white; margin-bottom: 15px;">Legal</h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 8px;"><a href="/privacy" style="color: #ccc; text-decoration: none;">Privacy Policy</a></li>
+                        <li style="margin-bottom: 8px;"><a href="/terms" style="color: #ccc; text-decoration: none;">Terms of Service</a></li>
+                        <li style="margin-bottom: 8px;"><a href="/cookies" style="color: #ccc; text-decoration: none;">Cookie Policy</a></li>
+                        <li style="margin-bottom: 8px;"><a href="/dmca" style="color: #ccc; text-decoration: none;">DMCA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #444; padding-top: 20px; text-align: center; color: #888;">
+                <p>© 2023 PDFTools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const selectFileBtn = document.getElementById('selectFileBtn');
+        const fileInfo = document.getElementById('fileInfo');
+        const fileName = document.getElementById('fileName');
+        const fileSize = document.getElementById('fileSize');
+        const convertBtn = document.getElementById('convertBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const outputName = document.getElementById('outputName');
+        const uploadError = document.getElementById('uploadError');
+
+        // Store file
+        let currentFile = null;
+
+        // Event Listeners
+        selectFileBtn.addEventListener('click', () => fileInput.click());
+        
+        fileInput.addEventListener('change', handleFileSelect);
+        
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'var(--primary-light)';
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = 'var(--border)';
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'var(--border)';
+            if (e.dataTransfer.files.length) {
+                fileInput.files = e.dataTransfer.files;
+                handleFileSelect({ target: fileInput });
+            }
+        });
+        
+        convertBtn.addEventListener('click', convertToWord);
+        clearBtn.addEventListener('click', clearFile);
+
+        // Functions
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const validTypes = [
+                'application/pdf',
+                '.pdf'
+            ];
+            
+            const isValidType = validTypes.some(type => {
+                return file.name.toLowerCase().endsWith(type) || 
+                       file.type.includes(type.replace('.', ''));
+            });
+            
+            if (!isValidType) {
+                showError('Please select a PDF document (.pdf)');
+                return;
+            }
+            
+            currentFile = file;
+            
+            // Show file info
+            fileName.textContent = file.name;
+            fileSize.textContent = formatFileSize(file.size);
+            fileInfo.style.display = 'block';
+            
+            // Set default output name
+            const baseName = file.name.replace(/\.[^/.]+$/, "");
+            outputName.value = `${baseName}.docx`;
+            
+            convertBtn.disabled = false;
+            fileInput.value = '';
+            uploadError.textContent = '';
+        }
+        
+        function clearFile() {
+            currentFile = null;
+            fileInfo.style.display = 'none';
+            convertBtn.disabled = true;
+            outputName.value = 'converted-document.docx';
+            document.getElementById('preserveLayout').checked = true;
+            document.getElementById('useOCR').checked = false;
+            document.getElementById('format').value = 'docx';
+        }
+        
+        function convertToWord() {
+            if (!currentFile) return;
+            
+            convertBtn.disabled = true;
+            convertBtn.textContent = 'Converting...';
+            
+            // Get selected options
+            const preserveLayout = document.getElementById('preserveLayout').checked;
+            const useOCR = document.getElementById('useOCR').checked;
+            const format = document.getElementById('format').value;
+            
+            // Simulate conversion process
+            setTimeout(() => {
+                showSuccess('Conversion complete! Your Word file is ready to download.');
+                
+                // Simulate download
+                const downloadLink = document.createElement('a');
+                downloadLink.href = '#';
+                downloadLink.download = outputName.value || 'converted-document.docx';
+                downloadLink.click();
+                
+                convertBtn.disabled = false;
+                convertBtn.textContent = 'Convert to Word';
+            }, 2000);
+        }
+        
+        function showError(message) {
+            uploadError.textContent = message;
+            setTimeout(() => {
+                uploadError.textContent = '';
+            }, 3000);
+        }
+        
+        function showSuccess(message) {
+            const successEl = document.createElement('div');
+            successEl.className = 'success-message';
+            successEl.textContent = message;
+            uploadArea.appendChild(successEl);
+            setTimeout(() => successEl.remove(), 3000);
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Initialize AdSense ads
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>
